@@ -18,21 +18,46 @@ Criador *criarListaDuplaCriadores() {
 }
 
 
-Criador *cadastrar(Criador *criadores) {
-
-	Criador *n = (Criador *) malloc(sizeof(Criador));
-	if (n == NULL) {
+Criador *cadastrar(Criador *criadores){
+	Criador *novo = (Criador *)malloc(sizeof(Criador));
+	if (novo == NULL)
+	{
 		printf("Erro ao alocar memoria\n");
 		exit(1);
 	}
+	printf("Informe o id do criador: ");
+	scanf("%d", &novo->id_criador);
+	printf("Informe o nome do criador: ");
+	scanf("%s",novo->nome);
 
-	printf("Digite o id: ");
-	scanf("%d",n->id_criador);
-	printf("Digite o nome: ");
-	scanf("%s",n->nome);
+	if (criadores == NULL || criadores->id_criador > novo->id_criador){
+		novo->prox = criadores;
+		novo->ant = criadores;
+		criadores = novo;
+	}
+	else{
+		Criador *aux = criadores;
+		while (aux->prox != NULL && aux->prox->id_criador < novo->id_criador){
+			aux = aux->prox;
+		}
+		novo->prox = aux->prox;
 
+		if (aux->prox != NULL){
+			aux->prox->ant = novo;
+		}
 
+		aux->prox = novo;
+		novo->ant = aux;
+	}
 
-	return n;
+	return criadores;
+}
 
+void imprimir(Criador *criadores){
+	Criador *aux = criadores;
+	while (aux != NULL){
+		printf("id: %d\n", aux->id_criador);
+		printf("nome da fazenda: %s\n", aux->nome);
+		aux = aux->prox;
+	}
 }
