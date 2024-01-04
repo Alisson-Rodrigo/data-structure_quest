@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "animal.h"
-#include "criador.h"
+#include "animal.c"
 #include "fazenda.h"
+#include "criador.c"
 
 struct endereco{
 	char cidade[50], estado[2], logradouro[200];
@@ -17,11 +17,10 @@ struct fazenda
 	Endereco localizacao;
 	float valor_fazenda;//lembrar de atualizar o valor sempre que houver alterações no rebanho
 	Animal *rebanho; // ponteiro para uma lista (verificar no .h do animal que lista é)
-	//ponteiro para permitir o apontamento para o proximo elemento da lista (deve ser circular)
-	struct fazenda *prox;
+	struct fazenda *prox; //ponteiro para permitir o apontamento para o proximo elemento da lista (deve ser circular)
 };
 
-Fazenda *criarListaCircularFazendas() {
+Criador *criarListaCircularFazendas() {
 	return NULL;
 }
 
@@ -31,21 +30,15 @@ Fazenda *cadastrar(Fazenda *fazendas) {
 		printf("Erro ao alocar memoria\n");
 		exit(1);
 	}
-
-	printf("Digite o id do criador: ");
-	scanf("%d",novo->id_criador);
-	printf("Digite o id da fazenda: ");
-	scanf("%d",novo->id_fazenda);
-	printf("Digite o nome: ");
-	scanf("%s",novo->nome);
-	printf("Digite a cidade: ");
-	scanf("%s",novo->localizacao.cidade);
-	printf("Digite o estado: ");
+	printf("Informe o estado onde fica a fazenda: ");
 	scanf("%s",novo->localizacao.estado);
-	printf("Digite o logradouro: ");
+	printf("Informe a cidade onde fica a fazenda: ");
+	scanf("%s",novo->localizacao.cidade);
+	printf("Informe o estado onde fica a fazenda: ");
+	scanf("%s",novo->localizacao.estado);
+	printf("Informe o logradouro proximo a fazenda: ");
 	scanf("%s",novo->localizacao.logradouro);
-	printf("Digite o valor da fazenda: ");
-	scanf("%f",novo->valor_fazenda);
-	
+	printf("Informe o id da fazenda: ");
+	scanf("%d",&novo->id_criador);
 
 }

@@ -28,6 +28,7 @@ Criador *cadastrar(Criador *criadores){
 	printf("Informe o nome do criador: ");
 	scanf("%s",novo->nome);
 
+
 	if (criadores == NULL || criadores->id_criador > novo->id_criador){
 		novo->prox = criadores;
 		novo->ant = criadores;
