@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "criador.h"
-#include "fazenda.h"
+#include "fazenda.c"
 
 struct criador{
 	int id_criador;
@@ -49,6 +49,10 @@ Criador *cadastrar(Criador *criadores){
 		novo->ant = aux;
 	}
 
+	novo->fazendas = criarListaCircularFazendas();
+	novo->fazendas = cadastrar(novo->fazendas);	
+
+
 	return criadores;
 }
 
@@ -56,7 +60,7 @@ void imprimir(Criador *criadores){
 	Criador *aux = criadores;
 	while (aux != NULL){
 		printf("id: %d\n", aux->id_criador);
-		printf("nome da fazenda: %s\n", aux->nome);
+		printf("nome da fazenda: %s\n", aux->fazendas->nome);
 		aux = aux->prox;
 	}
 }

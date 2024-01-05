@@ -7,7 +7,7 @@ struct animal{
 	int id_animal, id_fazenda;
 	char sexo; // M ou F
 	float peso; //em KG
-	int status; // 1 - Nascimento na propria fazenda | 2 - venda | 3 - troca 
+	int status; // 1 - Nascimento na propria fazenda | 2 - venda | 3 - troca
 	struct animal *prox;
 };
 
@@ -63,3 +63,14 @@ void imprimir(Animal *rebanho) {
 	}
 }
 
+
+void liberar(Animal *rebanho) {
+	Animal *aux = rebanho;
+	while (aux != NULL) {
+		Animal *temp = aux->prox;
+		free(aux);
+		aux = temp;
+	}
+
+
+}
