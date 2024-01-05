@@ -60,17 +60,14 @@ void imprimir(Criador *criadores){
 	}
 }
 
-Criador *remover(Criador *criadores) {
+Criador *remover(Criador *criadores,int id) {
+	//Passar id no main
     Criador *aux = criadores;
-    int id;
 
     if (criadores == NULL) {
         printf("Lista vazia.");
         return criadores; // Retorna a lista original, pois não há nada para remover
     }
-
-    printf("Informe o id a ser removido: ");
-    scanf("%d", &id);
 
     while (aux != NULL && id != aux->id_criador) {
         aux = aux->prox;
