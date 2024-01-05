@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "criador.h"
-#include "fazenda.c"
+#include "fazenda.h"
 
 struct criador{
 	int id_criador;
@@ -25,9 +25,8 @@ Criador *cadastrar(Criador *criadores){
 	}
 	printf("Informe o id do criador: ");
 	scanf("%d", &novo->id_criador);
-	printf("Informe o nome do criador: ");
-	scanf("%s",novo->nome);
-
+	// printf("Informe o nome do criador: ");
+	// scanf("%s",novo->nome);
 
 	if (criadores == NULL || criadores->id_criador > novo->id_criador){
 		novo->prox = criadores;
@@ -52,8 +51,42 @@ Criador *cadastrar(Criador *criadores){
 	return criadores;
 }
 
-Criador *remover(Criador *criadores, int id){
+void imprimir(Criador *criadores){
 	Criador *aux = criadores;
+	while (aux != NULL){
+		printf("id: %d\n", aux->id_criador);
+		// printf("nome da fazenda: %s\n", aux->nome);
+		aux = aux->prox;
+	}
+}
 
-	i
+Criador *remover(Criador *criadores) {
+    Criador *aux = criadores;
+    int id;
+
+    if (criadores == NULL) {
+        printf("Lista vazia.");
+        return criadores; // Retorna a lista original, pois não há nada para remover
+    }
+
+    printf("Informe o id a ser removido: ");
+    scanf("%d", &id);
+
+    while (aux != NULL && id != aux->id_criador) {
+        aux = aux->prox;
+    }
+
+    if (aux->ant == NULL) {
+        criadores = aux->prox;
+    } else {
+        aux->ant->prox = aux->prox;
+    }
+
+    if (aux->prox != NULL) {
+        aux->prox->ant = aux->ant;
+    }
+
+    free(aux);
+
+    return criadores;
 }

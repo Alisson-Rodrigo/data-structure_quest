@@ -12,12 +12,12 @@ struct animal{
 };
 
 
-Animal *criaListaEncadeadaSimplesAnimais() {
+Animal *criaListaEncadeadaSimplesAnimais(){
 	return NULL;
 }
 
 
-Animal *cadastrar(Animal *rebanho) {
+Animal *cadastrar(Animal *rebanho){
 
 	Animal *novo = (Animal *) malloc(sizeof(Animal));
 	if (novo == NULL) {
@@ -36,12 +36,12 @@ Animal *cadastrar(Animal *rebanho) {
 	printf("Digite o status: ");
 	scanf("%d",&novo->status);
 
-	if (rebanho == NULL || rebanho->id_animal > novo->id_animal) {
+	if (rebanho == NULL || rebanho->id_animal > novo->id_animal){
 		novo->prox = rebanho;
 		rebanho = novo;
-	} else {
+	} else{
 		Animal *aux = rebanho;
-		while (aux->prox != NULL && aux->prox->id_animal < novo->id_animal) {
+		while (aux->prox != NULL && aux->prox->id_animal < novo->id_animal){
 			aux = aux->prox;
 		}
 		novo->prox = aux->prox;
@@ -50,16 +50,3 @@ Animal *cadastrar(Animal *rebanho) {
 
 	return rebanho;
 }
-
-void imprimir(Animal *rebanho) {
-	Animal *aux = rebanho;
-	while (aux != NULL) {
-		printf("id: %d\n", aux->id_animal);
-		printf("id da fazenda: %d\n", aux->id_fazenda);
-		printf("sexo: %c\n", aux->sexo);
-		printf("peso: %f\n", aux->peso);
-		printf("status: %d\n", aux->status);
-		aux = aux->prox;
-	}
-}
-

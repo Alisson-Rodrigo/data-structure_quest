@@ -1,8 +1,14 @@
 #include <stdio.h>
+#include "criador.c"
 
-int main(){
+int main() {
+    Criador *listaCriadores = criarListaDuplaCriadores();
 
-    printf("oi");
-
-    return 0;
+    listaCriadores = cadastrar(listaCriadores);
+    listaCriadores = cadastrar(listaCriadores);
+    listaCriadores = cadastrar(listaCriadores);
+    imprimir(listaCriadores);
+    listaCriadores = remover(listaCriadores);
+    imprimir(listaCriadores);
+    return 0;   
 }
