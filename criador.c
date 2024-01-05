@@ -16,6 +16,7 @@ Criador *criarListaDuplaCriadores(){
 	return NULL;
 }
 
+
 Criador *cadastrar(Criador *criadores){
 	Criador *novo = (Criador *)malloc(sizeof(Criador));
 	if (novo == NULL)

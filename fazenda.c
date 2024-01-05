@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "animal.h"
+#include "animal.c"
 #include "criador.h"
 #include "fazenda.h"
 
@@ -17,8 +17,8 @@ struct fazenda
 	Endereco localizacao;
 	float valor_fazenda;//lembrar de atualizar o valor sempre que houver alterações no rebanho
 	Animal *rebanho; // ponteiro para uma lista (verificar no .h do animal que lista é)
-	//ponteiro para permitir o apontamento para o proximo elemento da lista (deve ser circular)
-	struct fazenda *prox;
+	struct fazenda *prox; //ponteiro para permitir o apontamento para o proximo elemento da lista (deve ser circular)
+
 };
 
 Fazenda *criarListaCircularFazendas() {
@@ -46,6 +46,8 @@ Fazenda *cadastrar(Fazenda *fazendas) {
 	scanf("%s",novo->localizacao.logradouro);
 	printf("Digite o valor da fazenda: ");
 	scanf("%f",novo->valor_fazenda);
+
+	novo->rebanho->id_animal = 1;
 	
 
 }
