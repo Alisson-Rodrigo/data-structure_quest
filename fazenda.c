@@ -21,6 +21,6 @@ struct fazenda
 	struct fazenda *prox;
 };
 
-Criador *criarListaEncadeadaCircularFazendas(){
+Fazenda *criarListaEncadeadaCircularFazendas(){
 	return NULL;
 }
