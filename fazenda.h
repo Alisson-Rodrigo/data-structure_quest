@@ -1,10 +1,10 @@
 typedef struct fazenda Fazenda;
 typedef struct endereco Endereco;
 
-Criador *criarListaEncadeadaCircularFazendas();
-Fazenda *cadastrar(Fazenda *fazendas);
-Fazenda *remover(Fazenda *fazendas, int id);//nao permitir remover fazenda se houver animais cadastrados
-int buscar(Fazenda *fazendas);
+//Criador *criarListaEncadeadaCircularFazendas();
+//Fazenda *cadastrar(Fazenda *fazendas);
+//Fazenda *remover(Fazenda *fazendas, int id);//nao permitir remover fazenda se houver animais cadastrados
+//int buscar(Fazenda *fazendas);
 
 /*
 Desenvolva funcoes que, dado uma FAZENDA, informar:

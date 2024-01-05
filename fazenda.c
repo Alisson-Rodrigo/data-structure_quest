@@ -21,31 +21,6 @@ struct fazenda
 	struct fazenda *prox;
 };
 
-Fazenda *criarListaCircularFazendas() {
+Criador *criarListaEncadeadaCircularFazendas(){
 	return NULL;
-}
-
-Fazenda *cadastrar(Fazenda *fazendas) {
-	Fazenda *novo = (Fazenda *) malloc(sizeof(Fazenda));
-	if (novo == NULL) {
-		printf("Erro ao alocar memoria\n");
-		exit(1);
-	}
-
-	printf("Digite o id do criador: ");
-	scanf("%d",novo->id_criador);
-	printf("Digite o id da fazenda: ");
-	scanf("%d",novo->id_fazenda);
-	printf("Digite o nome: ");
-	scanf("%s",novo->nome);
-	printf("Digite a cidade: ");
-	scanf("%s",novo->localizacao.cidade);
-	printf("Digite o estado: ");
-	scanf("%s",novo->localizacao.estado);
-	printf("Digite o logradouro: ");
-	scanf("%s",novo->localizacao.logradouro);
-	printf("Digite o valor da fazenda: ");
-	scanf("%f",novo->valor_fazenda);
-	
-
 }
