@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "criador.h"
-#include "fazenda.h"
+#include "fazenda.c"
 
 struct criador{
 	int id_criador;
@@ -52,11 +52,8 @@ Criador *cadastrar(Criador *criadores){
 	return criadores;
 }
 
-void imprimir(Criador *criadores){
+Criador *remover(Criador *criadores, int id){
 	Criador *aux = criadores;
-	while (aux != NULL){
-		printf("id: %d\n", aux->id_criador);
-		printf("nome da fazenda: %s\n", aux->nome);
-		aux = aux->prox;
-	}
+
+	i
 }
