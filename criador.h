@@ -1,10 +1,11 @@
 typedef struct criador Criador;
 
-Criador *criarListaDuplaCriadores();
-Criador *cadastrar(Criador *criadores);
-Criador *remover(Criador *criadores, int id);//nao é permitido remover criador com fazendas cadastradas
-int buscar(Criador *criadores);
-void imprimir(Criador *criadores);
+Criador *criarListaDuplaCriadores(); //ok
+Criador *cadastrarCriador(Criador *criadores);// ok
+Criador *removerCriador(Criador *criadores); // nao é permitido remover criador com fazendas cadastradas //ok
+Criador *buscarCriador(Criador *criadores); //ok
+void mostrarCriadores(Criador *criadores); //ok
+void liberar(Criador *criadores); //falta
 /*
 Desenvolva funçoes para:
 - Retornar o patrimonio do criador (esse valor deve sempre estar atualizado)
