@@ -20,6 +20,7 @@ int main() {
         printf("6 - Mostrar Animais por Status\n");//ok 
         printf("7 - Calcular Total de Arrobas\n");
         printf("8 - Calcular Valor Total da Fazenda\n");
+        printf("9 - Realizar Permuta de Animais\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -29,14 +30,19 @@ int main() {
                 criadores = cadastrarCriador(criadores);
                 break;
             case 2:
-                criadorSelecionado = buscarCriador(criadores);
-                if (criadorSelecionado != NULL) {
-                    criadorSelecionado->fazendas = criarListaEncadeadaCircularFazendas();
-                    criadorSelecionado->fazendas = cadastrarFazenda(criadorSelecionado->fazendas);
-                } else {
-                    printf("Criador nao encontrado.\n");
-                }
-                break;
+			    criadorSelecionado = buscarCriador(criadores);
+			    if (criadorSelecionado != NULL) {
+			        if (criadorSelecionado->fazendas == NULL) {
+			            criadorSelecionado->fazendas = criarListaEncadeadaCircularFazendas();
+			        }
+			        
+			        // Adiciona a nova fazenda à lista existente
+			        criadorSelecionado->fazendas = cadastrarFazenda(criadorSelecionado->fazendas);
+			    } else {
+			        printf("Criador nao encontrado.\n");
+			    }
+			    break;
+
             case 3:
                 if (criadorSelecionado != NULL) {
                     idFazenda = buscarFazenda(criadorSelecionado->fazendas);
@@ -88,6 +94,44 @@ int main() {
                     printf("Criador nao selecionado.\n");
                 }
                 break;
+            case 9:
+			    if (criadorSelecionado != NULL) {
+			        idFazenda = buscarFazenda(criadorSelecionado->fazendas);
+			        if (idFazenda) {
+			            Fazenda *fazendaOrigem = getFazenda(criadorSelecionado->fazendas, idFazenda);
+			            if (fazendaOrigem != NULL) {
+			                int idAnimal;
+			                printf("Informe o ID do animal a ser permutado: ");
+			                scanf("%d", &idAnimal);
+			
+			                Fazenda *fazendaDestino = NULL;
+			                int tentativas = 0;
+			
+			                do {
+			                    if (tentativas > 0) {
+			                        printf("Fazenda de destino inexistente. Tente novamente.\n");
+			                    }
+			
+			                    printf("Informe o ID da fazenda de destino: ");
+			                    scanf("%d", &idFazenda);
+			                    fazendaDestino = getFazenda(criadorSelecionado->fazendas, idFazenda);
+			
+			                    tentativas++;
+			                } while (fazendaDestino == NULL);
+			
+			                fazendaOrigem->rebanho = permutasAnimais(fazendaOrigem, fazendaDestino, idAnimal);
+			            } else {
+			                printf("Fazenda de origem inexistente.\n");
+			            }
+			        } else {
+			            printf("Fazenda inexistente.\n");
+			        }
+			    } else {
+			        printf("Criador nao selecionado.\n");
+			    }
+			    break;
+
+
             case 0:
                 printf("Saindo do programa...\n");
                 break;
