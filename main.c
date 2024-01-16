@@ -36,7 +36,7 @@ int main() {
 			            criadorSelecionado->fazendas = criarListaEncadeadaCircularFazendas();
 			        }
 			        
-			        // Adiciona a nova fazenda à lista existente
+			        // Adiciona a nova fazenda ï¿½ lista existente
 			        criadorSelecionado->fazendas = cadastrarFazenda(criadorSelecionado->fazendas);
 			    } else {
 			        printf("Criador nao encontrado.\n");
@@ -133,6 +133,7 @@ int main() {
 
 
             case 0:
+                liberarCriadores(criadores);
                 printf("Saindo do programa...\n");
                 break;
             default:
