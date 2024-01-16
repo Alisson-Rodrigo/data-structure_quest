@@ -129,9 +129,6 @@ void mostrarCriadores(Criador *criadores) {
 }
 
 
-
-
-
 Criador *removerCriador(Criador *criadores) {
     Criador *aux = buscarCriador(criadores);
 

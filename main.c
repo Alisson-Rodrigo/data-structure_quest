@@ -8,7 +8,7 @@
 int main() {
     Criador *criadores = criarListaDuplaCriadores();
     Criador *criadorSelecionado = NULL;
-    int idFazenda, opcao;
+    int idFazenda, opcao,idAnimal,idFazendaRemover;
 
     do {
         printf("\n---------------------------------------------\n");
@@ -22,6 +22,9 @@ int main() {
         printf("8 - Calcular Valor Total da Fazenda\n");
         printf("9 - Realizar Permuta de Animais\n");
         printf("10 - Exibir Patrimoio total\n");
+        printf("11 - Remover Criador\n");
+        printf("12 - Remover Animal\n");
+        printf("13 - Remover Animal\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -139,6 +142,51 @@ int main() {
 			        // Agora você também pode usar patrimonioTotal se precisar do valor em outras partes do código
 			    }
 			    break;
+			case 11:
+                criadores = removerCriador(criadores);
+                break;
+            case 12:
+                if (criadorSelecionado != NULL)
+                {
+                    printf("Informe o ID do animal a ser removido: ");
+                    scanf("%d", &idAnimal);
+
+                    int idFazenda = buscarFazenda(criadorSelecionado->fazendas);
+                    if (idFazenda)
+                    {
+                        Fazenda *fazenda = getFazenda(criadorSelecionado->fazendas, idFazenda);
+                        if (fazenda != NULL)
+                        {
+                            fazenda->rebanho = removerAnimal(fazenda, idAnimal);
+                        }
+                        else
+                        {
+                            printf("Fazenda inexistente.\n");
+                        }
+                    }
+                    else
+                    {
+                        printf("Fazenda inexistente.\n");
+                    }
+                }
+                else
+                {
+                    printf("Criador nao selecionado.\n");
+                }
+                break;
+            case 13:
+                if (criadorSelecionado != NULL)
+                {
+                    printf("Informe o ID da fazenda a ser removida: ");
+                    scanf("%d", &idFazendaRemover);
+
+                    criadorSelecionado->fazendas = removerFazenda(criadorSelecionado->fazendas, idFazendaRemover);
+                }
+                else
+                {
+                    printf("Criador nao selecionado.\n");
+                }
+                break;
 
             case 0:
                 liberarCriadores(criadores);

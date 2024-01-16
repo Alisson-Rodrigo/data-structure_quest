@@ -10,7 +10,7 @@ void patrimonioTotal(Criador *criador);
 float calculaPpatrimonioTotal(Criador *criador);
 /*
 Desenvolva funçoes para:
-- Retornar o patrimonio do criador (esse valor deve sempre estar atualizado) //falta
+- Retornar o patrimonio do criador (esse valor deve sempre estar atualizado) //ok
 - Funcao para mostrar cada criador e todos os seus respectivos atributos //ok
 - Funcao para liberar a memoria //feito
 */
