@@ -134,13 +134,3 @@ Criador *removerCriador(Criador *criadores) {
     return criadores;
 }
 
-void liberarMemoria(Criador *criadores) {
-    Criador *aux = criadores;
-    Criador *prox;
-    while (aux != NULL) {
-        liberarFazendas(aux->fazendas);
-        prox = aux->prox;
-        free(aux);
-        aux = prox;
-    }
-}
