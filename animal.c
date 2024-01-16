@@ -128,8 +128,8 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
     Animal* rebanho_origem = origem->rebanho;
     Animal* rebanho_destino = destino->rebanho;
 
-    printf("Endereço de Origem:\n%s;\n%s;\n%s;\n", origem->localizacao.cidade, origem->localizacao.estado, origem->localizacao.logradouro);
-    printf("Endereço de Destino:\n%s;\n%s;\n%s;\n", destino->localizacao.cidade, destino->localizacao.estado, destino->localizacao.logradouro);
+    printf("Enderecoo de Origem:\n%s;\n%s;\n%s;\n", origem->localizacao.cidade, origem->localizacao.estado, origem->localizacao.logradouro);
+    printf("Enderecoo de Destino:\n%s;\n%s;\n%s;\n", destino->localizacao.cidade, destino->localizacao.estado, destino->localizacao.logradouro);
 
     Animal* animal_origem = NULL;
 
@@ -142,7 +142,7 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
     }
 
     if (animal_origem == NULL) {
-        printf("Animal não encontrado na fazenda de origem.\n");
+        printf("Animal nao encontrado na fazenda de origem.\n");
         return rebanho_origem;
     }
 
@@ -161,7 +161,7 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
     scanf("%d", &op);
 
     while (op != 2 && op != 3) {
-        printf("Opção inválida. Informe outra opção.\n");
+        printf("Opcaoo invalida. Informe outra opcao.\n");
         printf("Informe o status:\n");
         printf("2 - Venda.\n");
         printf("3 - Troca.\n");
@@ -169,7 +169,7 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
     }
 
     if (op == 2) {
-        printf("Opção de venda selecionada.\n");
+        printf("Opcaoo de venda selecionada.\n");
         animal_origem->status = 2;
         destino->rebanho = animal_origem;
         rebanho_origem = removerAnimal(origem, id_animal);
