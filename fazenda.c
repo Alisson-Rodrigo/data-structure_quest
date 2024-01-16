@@ -264,3 +264,5 @@ void valorTotal(Fazenda *fazendas){
 
 	// return soma;
 }
+
+

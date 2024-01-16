@@ -305,3 +305,5 @@ int contArroba(Fazenda *fazenda){
 	}
 	return soma/15;
 }
+
+

@@ -94,12 +94,22 @@ int temFazenda(Fazenda *fazenda){
 }
 
 void mostrarCriadores(Criador *criadores) {
-    Criador *aux = criadores;  
+    Criador *aux = criadores;
 
     printf("\nLista de Criadores:\n");
     while (aux != NULL) {
         printf("ID: %d\n", aux->id_criador);
         printf("Nome: %s\n", aux->nome);
+        printf("Patrimônio: %.2f\n", aux->patrimonio);
+
+        // Se houver fazendas, mostrar as informações delas
+        if (temFazenda(aux->fazendas)) {
+            printf("Fazendas:\n");
+            mostrarFazendas(aux->fazendas);
+        } else {
+            printf("Sem fazendas.\n");
+        }
+
         printf("--------------------\n");
         aux = aux->prox;
     }

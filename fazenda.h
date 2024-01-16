@@ -21,5 +21,5 @@ void mostrarAnimalSexo(Fazenda *rebanho);
 void mostrarAnimalStatus(Fazenda *rebanho);
 void arrobaTotal(Fazenda *fazendas);
 void valorTotal(Fazenda *fazendas);
-
+void mostrarFazendas(Fazenda *fazendas);
 void liberarFazendas(Fazenda *fazendas);

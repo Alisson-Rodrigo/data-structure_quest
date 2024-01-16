@@ -18,3 +18,5 @@ Desenvolva funcoes que:
 void contAnimaisSexo(Fazenda *fazenda);
 void MostrarStatus(Fazenda *fazenda, int sts);
 int contArroba(Fazenda *fazenda);
+
+
