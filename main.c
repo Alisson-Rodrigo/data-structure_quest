@@ -133,7 +133,7 @@ int main() {
 
 
             case 0:
-                liberarMemoria(criadores);
+                liberarCriadores(criadores);
                 printf("Saindo do programa...\n");
                 break;
             default:

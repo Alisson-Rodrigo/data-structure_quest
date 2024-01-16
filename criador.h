@@ -5,7 +5,7 @@ Criador *cadastrarCriador(Criador *criadores);// ok
 Criador *removerCriador(Criador *criadores); // nao é permitido remover criador com fazendas cadastradas //ok
 Criador *buscarCriador(Criador *criadores); //ok
 void mostrarCriadores(Criador *criadores); //ok
-void liberar(Criador *criadores); //falta
+void liberarCriadores(Criador *criadores); //falta
 /*
 Desenvolva funçoes para:
 - Retornar o patrimonio do criador (esse valor deve sempre estar atualizado)
