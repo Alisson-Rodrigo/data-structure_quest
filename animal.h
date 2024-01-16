@@ -15,8 +15,7 @@ Desenvolva funcoes que:
 
 - Funcao para liberar a memoria
 */
-void contAnimaisSexo(Fazenda *fazenda);
-void MostrarStatus(Fazenda *fazenda, int sts);
-int contArroba(Fazenda *fazenda);
-
+void contAnimaisSexo(Fazenda *fazenda);//ok
+void MostrarStatus(Fazenda *fazenda, int sts);//ok
+int contArroba(Fazenda *fazenda);//ok
 

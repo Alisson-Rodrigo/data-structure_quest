@@ -8,7 +8,7 @@ void mostrarCriadores(Criador *criadores); //ok
 void liberarCriadores(Criador *criadores); //falta
 /*
 Desenvolva funçoes para:
-- Retornar o patrimonio do criador (esse valor deve sempre estar atualizado)
-- Funcao para mostrar cada criador e todos os seus respectivos atributos
-- Funcao para liberar a memoria
+- Retornar o patrimonio do criador (esse valor deve sempre estar atualizado) //falta
+- Funcao para mostrar cada criador e todos os seus respectivos atributos //ok
+- Funcao para liberar a memoria //feito
 */

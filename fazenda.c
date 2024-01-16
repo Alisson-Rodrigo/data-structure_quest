@@ -228,41 +228,38 @@ void mostrarAnimalStatus(Fazenda *fazendas)
 }
 
 
-void arrobaTotal(Fazenda *fazendas){
-	int id;
-	float arrobas=0;
+void arrobaTotal(Fazenda *fazendas) {
+    int id;
+    float arrobas = 0;
 
-	printf("\nInsira o ID da fazenda: "); 
-	scanf("%d", &id);
-	Fazenda *fazenda = getFazenda(fazendas, id);
+    printf("\nInsira o ID da fazenda: ");
+    scanf("%d", &id);
+    Fazenda *fazenda = getFazenda(fazendas, id);
 
-	if(fazenda){
-		arrobas = contArroba(fazenda);
-		printf("Total de arrobas: %.2f\n", arrobas);
-	}else{
-		printf("\nFazenda inexistente\n");
-	}
+    if (fazenda) {
+        arrobas = contArroba(fazenda);
+        printf("Total de arrobas: %.2f\n", arrobas);
+    } else {
+        printf("\nFazenda inexistente\n");
+    }
 }
 
-void valorTotal(Fazenda *fazendas){
-	int id;
-	float arrobas = 0;
-	printf("\nInsira o ID da fazenda: "); 
-	scanf("%d", &id);
-	Fazenda *fazenda = getFazenda(fazendas, id);
+void valorTotal(Fazenda *fazendas) {
+    int id;
+    float arrobas = 0;
+    
+    printf("\nInsira o ID da fazenda: ");
+    scanf("%d", &id);
+    Fazenda *fazenda = getFazenda(fazendas, id);
 
-	if(fazenda){
-		arrobas = contArroba(fazenda);
-		printf("Valor total da fazenda: %.2f\n", arrobas * 267.5);
-	}else{
-		printf("\nFazenda inexistente\n");
-	}
-	// do{
-	// 	soma += countArroba(fazenda) * 267.5;
-	// 	aux = aux->prox;
-	// }while(aux != fazendas);
-
-	// return soma;
+    if (fazenda) {
+        arrobas = contArroba(fazenda);
+        printf("Valor total da fazenda: %.2f\n", arrobas * 267.5);
+    } else {
+        printf("\nFazenda inexistente\n");
+    }
 }
+
+
 
 

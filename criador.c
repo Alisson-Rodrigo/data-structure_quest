@@ -94,26 +94,44 @@ int temFazenda(Fazenda *fazenda){
 }
 
 void mostrarCriadores(Criador *criadores) {
-    Criador *aux = criadores;
+    Criador *auxCriador = criadores;
 
-    printf("\nLista de Criadores:\n");
-    while (aux != NULL) {
-        printf("ID: %d\n", aux->id_criador);
-        printf("Nome: %s\n", aux->nome);
-        printf("Patrimônio: %.2f\n", aux->patrimonio);
+    if (criadores == NULL) {
+        printf("Lista de criadores vazia.\n");
+        return;
+    }
 
-        // Se houver fazendas, mostrar as informações delas
-        if (temFazenda(aux->fazendas)) {
-            printf("Fazendas:\n");
-            mostrarFazendas(aux->fazendas);
-        } else {
-            printf("Sem fazendas.\n");
+    printf("\n** Dados dos Criadores **\n");
+    printf("%-10s %-20s %-15s %-20s\n", "ID", "Nome", "Patrimônio", "Fazendas");
+
+    while (auxCriador != NULL) {
+        printf("%-10d %-20s %-15.2f", auxCriador->id_criador, auxCriador->nome, auxCriador->patrimonio);
+
+        // Mostrar fazendas se existirem
+        if (auxCriador->fazendas != NULL) {
+            printf(" (Fazendas: ");
+            
+            Fazenda *auxFazenda = auxCriador->fazendas;
+            do {
+                printf("%d ", auxFazenda->id_fazenda);
+
+                // Atualizar o patrimônio do criador com o valor total da fazenda
+                auxCriador->patrimonio += contArroba(auxFazenda) * 267.5;
+
+                auxFazenda = auxFazenda->prox;
+            } while (auxFazenda != auxCriador->fazendas);
+
+            printf(")");
         }
 
-        printf("--------------------\n");
-        aux = aux->prox;
+        printf("\n");
+
+        auxCriador = auxCriador->prox;
     }
 }
+
+
+
 
 Criador *removerCriador(Criador *criadores) {
     Criador *aux = buscarCriador(criadores);
