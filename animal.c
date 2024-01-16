@@ -98,57 +98,6 @@ Animal *buscarAnimal(Animal *rebanho)
 	return NULL;
 }
 
-// void mostrarAnimalSexo(Animal *rebanho)
-// {
-// 	Animal *aux;
-// 	int countF = 0, countM = 0;
-// 	for(aux = rebanho ; aux != NULL ; aux = aux->prox)
-// 	{
-// 		if (aux->sexo == 'F')
-// 		{
-// 			countF++;
-// 		}
-// 		if (aux->sexo == 'M')
-// 		{
-// 			countM++;
-// 		}	
-// 	}
-
-// 	printf("Masculino: %d\nFeminino: %d\n", countM, countF);
-
-// }
-
-// void mostrarAnimalStatus(Animal *rebanho)
-// {
-// 	Animal *aux;
-// 	int sts;
-// 	printf("Informe o tipo de status do animal que queira listar: ");
-// 	scanf("%d", &sts);
-// 	if (sts == 1)
-// 	{
-// 		printf("\nStatus: Nascimento na propria fazenda.\n");
-// 	}
-// 	if (sts == 2)
-// 	{
-// 		printf("\nStatus: Vendido.\n");
-// 	}
-// 	if (sts == 3)
-// 	{
-// 		printf("\nStatus: Troca.\n");
-// 	}
-// 	for(aux = rebanho ; aux != NULL ; aux = aux->prox)
-// 	{
-// 		if(aux->status == sts)
-// 		{
-// 			printf("---------------------------------------\n");
-// 			printf("Id da fazenda: %d\n", rebanho->id_fazenda);
-// 			printf("Id do animal: %d\n", rebanho->id_animal);
-// 			printf("Sexo: %c\n", rebanho->sexo);
-// 			printf("Peso: %.2f\n", rebanho->peso);
-// 		}
-// 	}
-// }
-
 
 Animal *removerAnimal(Fazenda *fazenda, int id_animal)
 {
@@ -184,7 +133,6 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
 
     Animal* animal_origem = NULL;
 
-    // Find the animal in the origin farm
     Animal* aux;
     for (aux = rebanho_origem; aux != NULL; aux = aux->prox) {
         if (aux->id_animal == id_animal) {
@@ -242,7 +190,6 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
         animal_origem->status = 3;
         animal_destino->status = 3;
 
-        // Swap animals between origin and destination farms
         if (animal_origem == rebanho_origem) {
             rebanho_origem = animal_destino;
         } else {
@@ -265,7 +212,7 @@ Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
 
 void contAnimaisSexo(Fazenda *fazenda){
 	int countF = 0, countM = 0;
-	Animal *aux = fazenda->rebanho; // Criação de um ponteiro auxiliar para percorrer a lista
+	Animal *aux = fazenda->rebanho; 
 	while (aux) {
 		if (aux->sexo == 'F') {
 			countF++;
@@ -273,7 +220,7 @@ void contAnimaisSexo(Fazenda *fazenda){
 		if (aux->sexo == 'M') {
 			countM++;
 		}
-		aux = aux->prox; // Avança para o próximo nó da lista
+		aux = aux->prox; 
 	}
 	
 	printf("Masculino: %d\nFeminino: %d\n", countM, countF);

@@ -162,7 +162,7 @@ Fazenda *getFazenda(Fazenda *fazendas, int id){
 
 void mostrarAnimalSexo(Fazenda *fazendas)
 {
-	//Animal *aux;
+	Animal *aux;
 	int id;
 	printf("\nInsira o ID da fazenda: "); 
 	scanf("%d", &id);
@@ -172,17 +172,6 @@ void mostrarAnimalSexo(Fazenda *fazendas)
     } else {
         printf("\nFazenda inexistente\n");
     }
-	// for(aux = rebanho ; aux != NULL ; aux = aux->prox)
-	// {
-	// 	if (aux->sexo == 'F')
-	// 	{
-	// 		countF++;
-	// 	}
-	// 	if (aux->sexo == 'M')
-	// 	{
-	// 		countM++;
-	// 	}	
-	// }
 
 
 }
@@ -197,29 +186,7 @@ void mostrarAnimalStatus(Fazenda *fazendas)
 	printf("Informe o tipo de status do animal que queira listar: \n");
 	printf("1 - Nascimento no propria fazenda\n2 - Vendido\n3 - Troca\n");
 	scanf("%d", &sts);
-	// if (sts == 1)
-	// {
-	// 	printf("\nStatus: Nascimento na propria fazenda.\n");
-	// }
-	// if (sts == 2)
-	// {
-	// 	printf("\nStatus: Vendido.\n");
-	// }
-	// if (sts == 3)
-	// {
-	// 	printf("\nStatus: Troca.\n");
-	// }
-	// for(aux = fazendas->rebanho ; aux != NULL ; aux = fazendas->rebanho->prox)
-	// {
-	// 	if(aux->rebanho->status == sts)
-	// 	{
-	// 		printf("---------------------------------------\n");
-	// 		printf("Id da fazenda: %d\n", aux->id_fazenda);
-	// 		printf("Id do animal: %d\n", aux->rebanho->id_animal);
-	// 		printf("Sexo: %c\n", aux->rebanho->sexo);
-	// 		printf("Peso: %.2f\n", aux->rebanho->peso);
-	// 	}
-	// }
+
 	if(fazenda){
 		MostrarStatus(fazenda, sts);
 	}else{

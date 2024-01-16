@@ -21,6 +21,7 @@ int main() {
         printf("7 - Calcular Total de Arrobas\n");
         printf("8 - Calcular Valor Total da Fazenda\n");
         printf("9 - Realizar Permuta de Animais\n");
+        printf("10 - Exibir Patrimoio total\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -131,6 +132,13 @@ int main() {
 			    }
 			    break;
 
+			case 10:
+			    mostrarCriadores(criadores);
+			    if (criadorSelecionado != NULL) {
+			        patrimonioTotal(criadorSelecionado);
+			        // Agora você também pode usar patrimonioTotal se precisar do valor em outras partes do código
+			    }
+			    break;
 
             case 0:
                 liberarCriadores(criadores);

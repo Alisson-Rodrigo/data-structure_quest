@@ -6,6 +6,8 @@ Criador *removerCriador(Criador *criadores); // nao é permitido remover criador
 Criador *buscarCriador(Criador *criadores); //ok
 void mostrarCriadores(Criador *criadores); //ok
 void liberarCriadores(Criador *criadores); //falta
+void patrimonioTotal(Criador *criador);
+float calculaPpatrimonioTotal(Criador *criador);
 /*
 Desenvolva funçoes para:
 - Retornar o patrimonio do criador (esse valor deve sempre estar atualizado) //falta

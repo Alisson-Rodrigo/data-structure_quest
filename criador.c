@@ -102,33 +102,32 @@ void mostrarCriadores(Criador *criadores) {
     }
 
     printf("\n** Dados dos Criadores **\n");
-    printf("%-10s %-20s %-15s %-20s\n", "ID", "Nome", "Patrimônio", "Fazendas");
 
     while (auxCriador != NULL) {
-        printf("%-10d %-20s %-15.2f", auxCriador->id_criador, auxCriador->nome, auxCriador->patrimonio);
+        printf("********************************************\n");
+        printf("ID: %d\n", auxCriador->id_criador);
+        printf("Nome: %s\n", auxCriador->nome);
 
         // Mostrar fazendas se existirem
         if (auxCriador->fazendas != NULL) {
-            printf(" (Fazendas: ");
+            printf("Fazendas: ");
             
             Fazenda *auxFazenda = auxCriador->fazendas;
             do {
                 printf("%d ", auxFazenda->id_fazenda);
 
-                // Atualizar o patrimônio do criador com o valor total da fazenda
-                auxCriador->patrimonio += contArroba(auxFazenda) * 267.5;
-
                 auxFazenda = auxFazenda->prox;
             } while (auxFazenda != auxCriador->fazendas);
 
-            printf(")");
+            printf("\n");
         }
-
-        printf("\n");
 
         auxCriador = auxCriador->prox;
     }
+
+    printf("********************************************\n");
 }
+
 
 
 
@@ -178,5 +177,41 @@ void liberarCriadores(Criador *criadores) {
 
         // Mover para o próximo criador
         aux = prox;
+    }
+}
+
+float calculaPatrimonioTotal(Criador *criador) {
+    float patrimonioFazendas = 0.0;
+
+    // Verifica se o criador possui fazendas
+    if (temFazenda(criador->fazendas)) {
+        Fazenda *auxFazenda = criador->fazendas;
+
+        // Percorre a lista circular de fazendas do criador
+        do {
+            // Calcula o valor total da fazenda e adiciona ao patrimônio
+            patrimonioFazendas += contArroba(auxFazenda) * 267.5;
+
+            auxFazenda = auxFazenda->prox;
+        } while (auxFazenda != criador->fazendas);
+    }
+
+    // Imprime o patrimônio total do criador
+    printf("Patrimonio Total do Criador %s: %.2f\n", criador->nome, patrimonioFazendas);
+
+    // Retorna o patrimônio total do criador
+    return patrimonioFazendas;
+}
+
+
+void patrimonioTotal(Criador *criadores) {
+    Criador *auxCriador = criadores;
+
+    // Percorre a lista de criadores
+    while (auxCriador != NULL) {
+        // Chama a função para calcular e exibir o patrimônio de cada criador
+        calculaPatrimonioTotal(auxCriador);
+
+        auxCriador = auxCriador->prox;
     }
 }
