@@ -134,3 +134,21 @@ Criador *removerCriador(Criador *criadores) {
     return criadores;
 }
 
+void liberarMemoria(Criador *criadores) {
+    Criador *aux = criadores;
+    Criador *prox;
+
+    while (aux != NULL) {
+        // Liberar a memória associada às fazendas
+        liberarFazendas(aux->fazendas);
+
+        // Salvar o próximo ponteiro antes de liberar o criador
+        prox = aux->prox;
+
+        // Liberar o criador atual
+        free(aux);
+
+        // Mover para o próximo criador
+        aux = prox;
+    }
+}
