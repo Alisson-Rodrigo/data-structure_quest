@@ -18,4 +18,4 @@ Desenvolva funcoes que:
 void contAnimaisSexo(Fazenda *fazenda);//ok
 void MostrarStatus(Fazenda *fazenda, int sts);//ok
 int contArroba(Fazenda *fazenda);//ok
-
+void liberarRebanho(Animal* rebanho);

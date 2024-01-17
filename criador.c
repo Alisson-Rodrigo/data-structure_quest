@@ -7,7 +7,7 @@
 #include "fazenda.c"
 #include "animal.h"
 #include "animal.c"
-// #include "fazenda.c"
+
 
 struct criador
 {
@@ -18,9 +18,13 @@ struct criador
 	struct criador *prox, *ant; // lista dupla encadeada, nao Ã© necessÃ¡rio ser circular
 };
 
+
+//Cria lista de  criadores
 Criador *criarListaDuplaCriadores(){
 	return NULL;
 }
+
+//Cadastra um novo criador
 Criador *cadastrarCriador(Criador *criadores) {
     Criador *novo = (Criador*)malloc(sizeof(Criador));
     printf("Informe o ID do criador: ");
@@ -52,7 +56,7 @@ Criador *cadastrarCriador(Criador *criadores) {
     return criadores;
 }
 
-
+//Retorna o numero de criadores na lista
 int size(Criador *c){
 	Criador *aux;
 	int count = 0;
@@ -66,6 +70,7 @@ int size(Criador *c){
 	return count;
 }
 
+//Verfica se tem criadores na lista
 Criador *buscarCriador(Criador *criadores){
 	Criador *aux = criadores;
 	int id;
@@ -84,7 +89,7 @@ Criador *buscarCriador(Criador *criadores){
 	printf("Criador nao encontrado.\n");
 	return NULL;
 }
-
+//verifica se existem fazendas
 int temFazenda(Fazenda *fazenda){
 	if(fazenda){
 		return 1;
@@ -93,6 +98,8 @@ int temFazenda(Fazenda *fazenda){
 	return 0;
 }
 
+
+//exibe os atributos dos criadores
 void mostrarCriadores(Criador *criadores) {
     Criador *auxCriador = criadores;
 
@@ -108,7 +115,7 @@ void mostrarCriadores(Criador *criadores) {
         printf("ID: %d\n", auxCriador->id_criador);
         printf("Nome: %s\n", auxCriador->nome);
 
-        // Mostrar fazendas se existirem
+      
         if (auxCriador->fazendas != NULL) {
             printf("Fazendas: ");
             
@@ -128,7 +135,7 @@ void mostrarCriadores(Criador *criadores) {
     printf("********************************************\n");
 }
 
-
+//remove o criador
 Criador *removerCriador(Criador *criadores) {
     Criador *aux = buscarCriador(criadores);
 
@@ -158,57 +165,60 @@ Criador *removerCriador(Criador *criadores) {
     return criadores;
 }
 
-void liberarCriadores(Criador *criadores) {
-    Criador *aux = criadores;
-    Criador *prox;
 
-    while (aux != NULL) {
-        // Liberar a memória associada às fazendas
-        //iberarFazendas(aux->fazendas);
-
-        // Salvar o próximo ponteiro antes de liberar o criador
-        prox = aux->prox;
-
-        // Liberar o criador atual
-        free(aux);
-
-        // Mover para o próximo criador
-        aux = prox;
-    }
-}
-
+//calcula o patrinmonio total do criador
 float calculaPatrimonioTotal(Criador *criador) {
     float patrimonioFazendas = 0.0;
 
-    // Verifica se o criador possui fazendas
+   
     if (temFazenda(criador->fazendas)) {
         Fazenda *auxFazenda = criador->fazendas;
 
-        // Percorre a lista circular de fazendas do criador
+      
         do {
-            // Calcula o valor total da fazenda e adiciona ao patrimônio
+            
             patrimonioFazendas += contArroba(auxFazenda) * 267.5;
 
             auxFazenda = auxFazenda->prox;
         } while (auxFazenda != criador->fazendas);
     }
 
-    // Imprime o patrimônio total do criador
+
     printf("Patrimonio Total do Criador %s: %.2f\n", criador->nome, patrimonioFazendas);
 
-    // Retorna o patrimônio total do criador
+  
     return patrimonioFazendas;
 }
 
-
+//percorre a lista de criadores e aplica o calculo para cada criador exixtente na lista
 void patrimonioTotal(Criador *criadores) {
     Criador *auxCriador = criadores;
 
-    // Percorre a lista de criadores
+  
     while (auxCriador != NULL) {
-        // Chama a função para calcular e exibir o patrimônio de cada criador
+        
         calculaPatrimonioTotal(auxCriador);
 
         auxCriador = auxCriador->prox;
+    }
+}
+
+//libera a lista de criadores
+void liberarCriadores(Criador* criadores) {
+    Criador* aux = criadores;
+    Criador* prox;
+
+    while (aux != NULL) {
+      
+        liberarFazenda(aux->fazendas);
+
+      
+        prox = aux->prox;
+
+       
+        free(aux);
+
+      
+        aux = prox;
     }
 }

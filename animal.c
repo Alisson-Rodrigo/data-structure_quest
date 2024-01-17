@@ -14,11 +14,13 @@ struct animal {
 	struct animal *prox;
 };
 
+//cria Lista de animais
 Animal *criaListaEncadeadaSimplesAnimais() {
 	printf("Animal Criar.");
 	return NULL;
 }
 
+//Cadastra um novo animal na lista
 Animal *cadastrarAnimal(Animal *rebanho) {
     Animal *novo = (Animal *)malloc(sizeof(Animal));
 
@@ -63,7 +65,7 @@ Animal *cadastrarAnimal(Animal *rebanho) {
     return rebanho;
 }
 
-
+//Busca se exitem animais na lista
 Animal *buscarAnimal(Animal *rebanho)
 {
 	Animal *aux;
@@ -98,7 +100,7 @@ Animal *buscarAnimal(Animal *rebanho)
 	return NULL;
 }
 
-
+//Remove um animal da fazenda
 Animal *removerAnimal(Fazenda *fazenda, int id_animal)
 {
 	Animal *remover_animal = fazenda->rebanho;
@@ -124,92 +126,11 @@ Animal *removerAnimal(Fazenda *fazenda, int id_animal)
 	return fazenda->rebanho;	
 }
 
+//faz a permuta de animais entre fazendas
 Animal* permutasAnimais(Fazenda* origem, Fazenda* destino, int id_animal) {
-    Animal* rebanho_origem = origem->rebanho;
-    Animal* rebanho_destino = destino->rebanho;
-
-    printf("Enderecoo de Origem:\n%s;\n%s;\n%s;\n", origem->localizacao.cidade, origem->localizacao.estado, origem->localizacao.logradouro);
-    printf("Enderecoo de Destino:\n%s;\n%s;\n%s;\n", destino->localizacao.cidade, destino->localizacao.estado, destino->localizacao.logradouro);
-
-    Animal* animal_origem = NULL;
-
-    Animal* aux;
-    for (aux = rebanho_origem; aux != NULL; aux = aux->prox) {
-        if (aux->id_animal == id_animal) {
-            animal_origem = aux;
-            break;
-        }
-    }
-
-    if (animal_origem == NULL) {
-        printf("Animal nao encontrado na fazenda de origem.\n");
-        return rebanho_origem;
-    }
-
-    printf("---------------------------------------\n");
-    printf("Id da fazenda: %d\n", animal_origem->id_fazenda);
-    printf("Id do animal: %d\n", animal_origem->id_animal);
-    printf("Sexo: %c\n", animal_origem->sexo);
-    printf("Peso: %.2f\n", animal_origem->peso);
-    printf("Status: %d\n\n", animal_origem->status);
-
-    int op;
-
-    printf("Informe o status:\n");
-    printf("2 - Venda.\n");
-    printf("3 - Troca.\n");
-    scanf("%d", &op);
-
-    while (op != 2 && op != 3) {
-        printf("Opcaoo invalida. Informe outra opcao.\n");
-        printf("Informe o status:\n");
-        printf("2 - Venda.\n");
-        printf("3 - Troca.\n");
-        scanf("%d", &op);
-    }
-
-    if (op == 2) {
-        printf("Opcaoo de venda selecionada.\n");
-        animal_origem->status = 2;
-        destino->rebanho = animal_origem;
-        rebanho_origem = removerAnimal(origem, id_animal);
-        if (rebanho_origem == NULL) {
-            printf("A venda não foi bem sucedida.\n");
-        } else {
-            printf("Animal vendido com sucesso.\n");
-        }
-    } else if (op == 3) {
-        Animal* animal_destino = rebanho_destino;
-
-        if (animal_destino == NULL) {
-            printf("Animal não encontrado na fazenda de destino.\n");
-            return rebanho_origem;
-        }
-
-        printf("Opção de troca selecionada.\n");
-        animal_origem->status = 3;
-        animal_destino->status = 3;
-
-        if (animal_origem == rebanho_origem) {
-            rebanho_origem = animal_destino;
-        } else {
-            for (aux = rebanho_origem; aux != NULL; aux = aux->prox) {
-                if (aux->prox == animal_origem) {
-                    aux->prox = animal_destino;
-                    break;
-                }
-            }
-        }
-
-        animal_destino->prox = animal_origem->prox;
-        animal_origem->prox = rebanho_destino;
-
-        printf("Troca realizada com sucesso.\n");
-    }
-
-    return rebanho_origem;
+    
 }
-
+//retorna quantos animais de cada sexo tem na fazenda
 void contAnimaisSexo(Fazenda *fazenda){
 	int countF = 0, countM = 0;
 	Animal *aux = fazenda->rebanho; 
@@ -225,7 +146,7 @@ void contAnimaisSexo(Fazenda *fazenda){
 	
 	printf("Masculino: %d\nFeminino: %d\n", countM, countF);
 }
-
+//mostra o status do anima,de qual fazenda ele e ,peso,sexo e etc
 void MostrarStatus(Fazenda *fazenda, int sts) {
     Animal *aux = fazenda->rebanho;
     while (aux) {
@@ -241,6 +162,7 @@ void MostrarStatus(Fazenda *fazenda, int sts) {
     }
 }
 
+//calcula quantos arrobas os animais daquela fazwnda tem
 int contArroba(Fazenda *fazenda){
 	float soma=0;
 	Animal *aux = fazenda->rebanho;
@@ -253,4 +175,16 @@ int contArroba(Fazenda *fazenda){
 	return soma/15;
 }
 
+
+//Libera a lista animal
+void liberarRebanho(struct animal* rebanho) {
+    struct animal* atual = rebanho;
+    struct animal* proximo;
+
+    while (atual != NULL) {
+        proximo = atual->prox;
+        free(atual);
+        atual = proximo;
+    }
+}
 

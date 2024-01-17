@@ -4,7 +4,7 @@ typedef struct endereco Endereco;
 
 Fazenda *criarListaEncadeadaCircularFazendas(); //ok
 Fazenda *cadastrarFazenda(Fazenda *fazendas); //ok
-Fazenda *removerFazenda(Fazenda *fazendas, int id);//nao permitir remover fazenda se houver animais cadastrados //ok
+Fazenda *removerFazenda(Fazenda *fazendas, int id);//ok
 int buscarFazenda(Fazenda *fazendas); //ok
 Fazenda *getFazenda(Fazenda *fazendas, int id);//ok
 

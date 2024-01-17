@@ -12,7 +12,7 @@ int main() {
 
     do {
         printf("\n---------------------------------------------\n");
-        printf("1 - Cadastrar Criador\n"); //ok
+        printf("1 - Cadastrar Criador\n"); //oks
         printf("2 - Cadastrar Fazenda\n"); //ok
         printf("3 - Cadastrar Animal\n"); //ok
         printf("4 - Mostrar Criadores\n"); //ok
@@ -24,7 +24,7 @@ int main() {
         printf("10 - Exibir Patrimoio total\n");
         printf("11 - Remover Criador\n");
         printf("12 - Remover Animal\n");
-        printf("13 - Remover Animal\n");
+        printf("13 - Remover Fazenda\n");
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -40,7 +40,6 @@ int main() {
 			            criadorSelecionado->fazendas = criarListaEncadeadaCircularFazendas();
 			        }
 			        
-			        // Adiciona a nova fazenda � lista existente
 			        criadorSelecionado->fazendas = cadastrarFazenda(criadorSelecionado->fazendas);
 			    } else {
 			        printf("Criador nao encontrado.\n");

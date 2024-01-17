@@ -21,10 +21,11 @@ struct fazenda{
 	struct fazenda *prox;
 };
 
+//cria a lista de fazenda
 Fazenda *criarListaEncadeadaCircularFazendas(){
 	return NULL;
 }
-
+//cadastra uma nova fazenda
 Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	Fazenda *novo = (Fazenda *) malloc(sizeof(Fazenda));
 	Fazenda *aux = fazendas;
@@ -42,7 +43,6 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	scanf("%s", novo->localizacao.estado);
 	printf("Insira o logradouro: "); 
 	scanf("%s", novo->localizacao.logradouro);
-	//novo->rebanho = cadastrarAnimal(novo->rebanho);
 	
 
 	if(fazendas == NULL){
@@ -60,6 +60,87 @@ Fazenda *cadastrarFazenda(Fazenda *fazendas){
 	return fazendas;
 }
 
+
+//verifica se existem fazendas na lista
+int buscarFazenda(Fazenda *fazendas){
+	Fazenda *aux = fazendas;
+	int id;
+	printf("Informe o id da fazenda a buscar\n");
+	scanf("%d", &id);
+
+	if(fazendas == NULL){
+		printf("\nSem fazendas registradas!\n");
+		return 0;
+	}
+
+	if(aux->id_fazenda == id){
+		return aux->id_fazenda;
+	}
+
+	while(aux->prox != fazendas && aux->prox->id_fazenda != id){
+		aux = aux->prox;
+	}
+
+	return aux->prox == fazendas ? 0 : aux->prox->id_fazenda;
+}
+//retorna a fazenda escolhjida por meio de id
+Fazenda *getFazenda(Fazenda *fazendas, int id){
+
+  	Fazenda *aux = fazendas;
+
+  	if(fazendas == NULL){
+  		printf("\nSem fazendas registradas!\n");
+  		return fazendas;
+  	}
+
+  	if(aux->id_fazenda == id){
+  		return aux;
+  	}
+
+  	while(aux->prox != fazendas && aux->prox->id_fazenda != id){
+  		aux = aux->prox;
+  	}
+
+  	return aux->prox == fazendas ? NULL : aux->prox;
+}
+
+//mostra o sexo dos animais exixtentes na fazenda
+void mostrarAnimalSexo(Fazenda *fazendas)
+{
+	Animal *aux;
+	int id;
+	printf("\nInsira o ID da fazenda: "); 
+	scanf("%d", &id);
+	Fazenda *fazenda = getFazenda(fazendas, id);
+	if (fazenda) {
+        contAnimaisSexo(fazenda);
+    } else {
+        printf("\nFazenda inexistente\n");
+    }
+
+
+}
+
+//mostra o status do anima,de qual fazenda ele e ,peso,sexo e etc
+void mostrarAnimalStatus(Fazenda *fazendas)
+{
+
+	int sts, id;
+	printf("\nInsira o ID da fazenda: \n"); 
+	scanf("%d", &id);
+	Fazenda *fazenda = getFazenda(fazendas, id);
+	printf("Informe o tipo de status do animal que queira listar: \n");
+	printf("1 - Nascimento no propria fazenda\n2 - Vendido\n3 - Troca\n");
+	scanf("%d", &sts);
+
+	if(fazenda){
+		MostrarStatus(fazenda, sts);
+	}else{
+		printf("\nFazenda inexistente\n");
+	}
+}
+
+//remove uma fazenda da lista
 Fazenda *removerFazenda(Fazenda *fazendas, int id){
   	Fazenda *aux = fazendas, *aux2;
 
@@ -117,84 +198,7 @@ Fazenda *removerFazenda(Fazenda *fazendas, int id){
 
 }
 
-int buscarFazenda(Fazenda *fazendas){
-	Fazenda *aux = fazendas;
-	int id;
-	printf("Informe o id da fazenda a buscar\n");
-	scanf("%d", &id);
-
-	if(fazendas == NULL){
-		printf("\nSem fazendas registradas!\n");
-		return 0;
-	}
-
-	if(aux->id_fazenda == id){
-		return aux->id_fazenda;
-	}
-
-	while(aux->prox != fazendas && aux->prox->id_fazenda != id){
-		aux = aux->prox;
-	}
-
-	return aux->prox == fazendas ? 0 : aux->prox->id_fazenda;
-}
-
-Fazenda *getFazenda(Fazenda *fazendas, int id){
-
-  	Fazenda *aux = fazendas;
-
-  	if(fazendas == NULL){
-  		printf("\nSem fazendas registradas!\n");
-  		return fazendas;
-  	}
-
-  	if(aux->id_fazenda == id){
-  		return aux;
-  	}
-
-  	while(aux->prox != fazendas && aux->prox->id_fazenda != id){
-  		aux = aux->prox;
-  	}
-
-  	return aux->prox == fazendas ? NULL : aux->prox;
-}
-
-
-void mostrarAnimalSexo(Fazenda *fazendas)
-{
-	Animal *aux;
-	int id;
-	printf("\nInsira o ID da fazenda: "); 
-	scanf("%d", &id);
-	Fazenda *fazenda = getFazenda(fazendas, id);
-	if (fazenda) {
-        contAnimaisSexo(fazenda);
-    } else {
-        printf("\nFazenda inexistente\n");
-    }
-
-
-}
-
-void mostrarAnimalStatus(Fazenda *fazendas)
-{
-	//Fazenda *aux;
-	int sts, id;
-	printf("\nInsira o ID da fazenda: \n"); 
-	scanf("%d", &id);
-	Fazenda *fazenda = getFazenda(fazendas, id);
-	printf("Informe o tipo de status do animal que queira listar: \n");
-	printf("1 - Nascimento no propria fazenda\n2 - Vendido\n3 - Troca\n");
-	scanf("%d", &sts);
-
-	if(fazenda){
-		MostrarStatus(fazenda, sts);
-	}else{
-		printf("\nFazenda inexistente\n");
-	}
-}
-
-
+//calcula o toal de arrobas dda fazenda
 void arrobaTotal(Fazenda *fazendas) {
     int id;
     float arrobas = 0;
@@ -210,7 +214,7 @@ void arrobaTotal(Fazenda *fazendas) {
         printf("\nFazenda inexistente\n");
     }
 }
-
+//calcula o valor da fazenda
 void valorTotal(Fazenda *fazendas) {
     int id;
     float arrobas = 0;
@@ -221,12 +225,31 @@ void valorTotal(Fazenda *fazendas) {
 
     if (fazenda) {
         arrobas = contArroba(fazenda);
-        printf("Valor total da fazenda: %.2f\n", arrobas * 267.5);
+        printf("Valor total da fazenda: %.2f\n", arrobas * 235);
     } else {
         printf("\nFazenda inexistente\n");
     }
 }
 
+//libera a lsita de fazendas
+void liberarFazenda(Fazenda* fazendas) {
+    if (fazendas == NULL) {
+        return; 
+    }
 
+    Fazenda* atual = fazendas;
+    Fazenda* proxima;
+
+    do {
+        
+        liberarRebanho(atual->rebanho);
+
+        
+        proxima = atual->prox;
+        free(atual);
+        atual = proxima;
+
+    } while (atual != fazendas);
+}
 
 
